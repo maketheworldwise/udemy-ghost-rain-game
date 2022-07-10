@@ -6,42 +6,60 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="intro">
-      <h1>Ghost Rain Game</h1>
-      <p>Avoid the ghosts coming down!</p>
-    </div>
+    <header>
+      <div class="header__item">
+        <div class="header__item--introduction">
+          <h1>Ghost Rain Game</h1>
+          <p>Avoid the ghosts coming down!</p>
+        </div>
 
-    <div id="info">
-      <p>
-        Life : 
-        <img src="./images/heart-16x16.png" alt="Icon not found.">
-        <img src="./images/heart-16x16.png" alt="Icon not found.">
-        <img src="./images/heart-16x16.png" alt="Icon not found.">
-      </p>
-      <p>Play time :</p>
-      <p>Points :</span>
-    </div>
+        <div class="header__item--informations">
+          <div class="header__item--informations-life">
+            Life :
+            <img src="./images/heart-16x16.png" alt="Icon not found." />
+            <img src="./images/heart-16x16.png" alt="Icon not found." />
+            <img src="./images/heart-16x16.png" alt="Icon not found." />
+          </div>
 
-    <div id="bg">
-      <!-- <span id="hero"></span> -->
-      <img src="./images/bg.png" alt="Image not found." />
-    </div>
+          <div class="header__item--informations-play-time">Play time :</div>
+          <div class="header__item--informations-points">Points :</div>
+        </div>
+      </div>
+    </header>
 
-    <button type="button" onclick="alert('Start!!')">Game Start!</button>
+    <section class="container-main">
+      <div id="bg">
+        <span id="hero" class="stop"></span>
+        <!-- <img src="./images/bg.png" alt="Image not found." /> -->
+      </div>
+      <button
+        class="container-main__item--btn-start"
+        type="button"
+        onclick="alert('Start!!')"
+      >
+        Game Start!
+      </button>
+    </section>
 
-    <div id="rank">
-      <h2>Ranking</h2>
-      <table>
-        <th>Rank</th>
-        <th>Play time</th>
-        <th>Points</th>
-        <tr>
-          <td>1</td>
-          <td>00:00</td>
-          <td>10</td>
-        </tr>
-      </table>
-    </div>
+    <section class="container-result">
+      <div class="container-result__item">
+        <div class="container-result__item--description">
+          <h2>Ranking</h2>
+        </div>
+        <div class="container-result__item--rank">
+          <table>
+            <th>Rank</th>
+            <th>Play time</th>
+            <th>Points</th>
+            <tr>
+              <td>1</td>
+              <td>00:00</td>
+              <td>10</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
 
     <script src="js/settings.js"></script>
     <script src="js/ghost.js"></script>
