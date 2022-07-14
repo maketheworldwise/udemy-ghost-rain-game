@@ -9,3 +9,7 @@ const HERO_HEIGHT = 54;
 
 const heroElement = document.getElementById("hero");
 const bgElement = document.getElementById("bg");
+
+function removePxString(str) {
+  return Number(str.split("px")[0]);
+}

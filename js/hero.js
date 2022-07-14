@@ -1,7 +1,5 @@
 function heroAction(eventCode) {
-  const heroLeftPoint = Number(
-    getComputedStyle(heroElement).left.split("px")[0]
-  );
+  const heroLeftPoint = removePxString(getComputedStyle(heroElement).left);
   const move = [heroLeftPoint - 10, heroLeftPoint + 10];
 
   switch (eventCode) {
