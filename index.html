@@ -7,57 +7,42 @@
   </head>
   <body>
     <header>
-      <div class="header__item">
-        <div class="header__item--introduction">
-          <h1>Ghost Rain Game</h1>
-          <p>Avoid the ghosts coming down!</p>
+      <div class="header__intro">
+        <h1>Ghost Rain Game</h1>
+        <p>Avoid the ghosts coming down!</p>
+      </div>
+
+      <div class="header__info">
+        <div class="header__life">
+          Life :
+          <img src="./images/heart-16x16.png" alt="Icon not found." />
+          <img src="./images/heart-16x16.png" alt="Icon not found." />
+          <img src="./images/heart-16x16.png" alt="Icon not found." />
         </div>
 
-        <div class="header__item--informations">
-          <div class="header__item--informations-life">
-            Life :
-            <img src="./images/heart-16x16.png" alt="Icon not found." />
-            <img src="./images/heart-16x16.png" alt="Icon not found." />
-            <img src="./images/heart-16x16.png" alt="Icon not found." />
-          </div>
-
-          <div class="header__item--informations-play-time">Play time :</div>
-          <div class="header__item--informations-points">Points :</div>
-        </div>
+        <div class="header__play-time">Play time : 00:00</div>
+        <div class="header__point">Points : 0</div>
       </div>
     </header>
 
-    <section class="container-main">
-      <div id="bg">
+    <section>
+      <div class="section__game" id="bg">
         <span id="hero"></span>
-        <!-- <img src="./images/bg.png" alt="Image not found." /> -->
       </div>
-      <button
-        class="container-main__item--btn-start"
-        type="button"
-        onclick="alert('Start!!')"
-      >
-        Game Start!
-      </button>
-    </section>
 
-    <section class="container-result">
-      <div class="container-result__item">
-        <div class="container-result__item--description">
-          <h2>Ranking</h2>
-        </div>
-        <div class="container-result__item--rank">
-          <table>
-            <th>Rank</th>
-            <th>Play time</th>
-            <th>Points</th>
-            <tr>
-              <td>1</td>
-              <td>00:00</td>
-              <td>10</td>
-            </tr>
-          </table>
-        </div>
+      <button>Game Start!</button>
+
+      <div class="section__rank">
+        <table>
+          <th>Rank</th>
+          <th>Play time</th>
+          <th>Points</th>
+          <tr>
+            <td>1</td>
+            <td>00:00</td>
+            <td>10</td>
+          </tr>
+        </table>
       </div>
     </section>
 
