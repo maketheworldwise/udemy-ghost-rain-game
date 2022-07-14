@@ -10,16 +10,16 @@ document.addEventListener("keydown", function (event) {
       heroElement.className = "left";
       calculatedLeft = heroLeftWithoutPx + 10;
 
-      if (calculatedPosition <= 750) {
-        heroElement.style.left = calculatedPosition + "px";
+      if (calculatedLeft <= 750) {
+        heroElement.style.left = calculatedLeft + "px";
       }
       break;
     case "ArrowLeft":
       heroElement.className = "right";
       calculatedLeft = heroLeftWithoutPx - 10;
 
-      if (calculatedPosition >= 0) {
-        heroElement.style.left = calculatedPosition + "px";
+      if (calculatedLeft >= 0) {
+        heroElement.style.left = calculatedLeft + "px";
       }
       break;
     case "ArrowUp":
