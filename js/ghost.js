@@ -4,7 +4,7 @@ function createGhost() {
   ghostElement.style.position = "absolute";
   ghostElement.style.top = "0px";
 
-  let randomLeft = randomNum();
+  let randomLeft = randomNum(0, BG_WIDTH - GHOST_WIDTH);
   ghostElement.style.left = randomLeft + "px"; // "50%";
 
   ghostElement.style.width = GHOST_WIDTH + "px";
@@ -14,9 +14,8 @@ function createGhost() {
   bgElement.appendChild(ghostElement);
 }
 
-createGhost();
-
-function randomNum() {
-  let randomNumberUnder755 = Math.floor(Math.random() * 755);
-  return randomNumberUnder755;
+function randomNum(min, max) {
+  return Math.floor(Math.random() * (max + 1 - min)) + min;
 }
+
+createGhost();
