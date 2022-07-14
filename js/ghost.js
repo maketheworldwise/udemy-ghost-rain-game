@@ -13,10 +13,15 @@ function createGhost() {
 
   bgElement.appendChild(ghostElement);
 
-  setInterval(function () {
+  let interval = setInterval(function () {
     const ghostTopPoint = removePxString(ghostElement.style.top);
     const ghostLeftPoint = removePxString(ghostElement.style.left);
     const heroLeftPoint = removePxString(heroElement.style.left);
+
+    if (lifeElements.length === 0) {
+      clearInterval(interval);
+      return;
+    }
 
     if (ghostTopPoint >= BG_HEIGHT - (HERO_HEIGHT + GHOST_HEIGHT)) {
       const ghostPointRange = [ghostLeftPoint, ghostLeftPoint + GHOST_WIDTH];
@@ -37,6 +42,7 @@ function createGhost() {
 
     if (move >= BG_HEIGHT - GHOST_HEIGHT) {
       ghostElement.remove();
+      pointElements.innerText = Number(pointElements.innerText) + 1;
       return;
     }
 
@@ -49,10 +55,17 @@ function killGhost(ghostElement) {
   setTimeout(function () {
     ghostElement.remove();
   }, 300);
+  let point = Number(pointElements.innerText) - 1;
+  if (point < 0) {
+    pointElements.innerText = 0;
+  } else {
+    pointElements.innerText = point;
+  }
+  // lifeElements[lifeElements.length - 1].remove();
 }
 
 function randomNum(min, max) {
   return Math.floor(Math.random() * (max + 1 - min)) + min;
 }
 
-setInterval(createGhost, 300);
+// setInterval(createGhost, 300);

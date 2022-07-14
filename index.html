@@ -15,13 +15,28 @@
       <div class="header__info">
         <div class="header__life">
           Life :
-          <img src="./images/heart-16x16.png" alt="Icon not found." />
-          <img src="./images/heart-16x16.png" alt="Icon not found." />
-          <img src="./images/heart-16x16.png" alt="Icon not found." />
+          <img
+            class="life"
+            src="./images/heart-16x16.png"
+            alt="Icon not found."
+          />
+          <img
+            class="life"
+            src="./images/heart-16x16.png"
+            alt="Icon not found."
+          />
+          <img
+            class="life"
+            src="./images/heart-16x16.png"
+            alt="Icon not found."
+          />
         </div>
 
         <div class="header__play-time">Play time : 00:00</div>
-        <div class="header__point">Points : 0</div>
+        <div class="header__point">
+          Points :
+          <span id="point">0</span>
+        </div>
       </div>
     </header>
 
@@ -30,7 +45,7 @@
         <span id="hero"></span>
       </div>
 
-      <button>Game Start!</button>
+      <button id="section__btn-start">Game Start!</button>
 
       <div class="section__rank">
         <table>
