@@ -23,16 +23,20 @@
   display: inline-block;
 }
 
-#hero.stop {
+#hero.up {
+  background-position: -35px 0px;
+}
+
+#hero.down {
   background-position: 0px 0px;
 }
 
 #hero.right {
-  background-position: -105px 0px;
+  background-position: -70px 0px;
 }
 
 #hero.left {
-  background-position: -70px 0px;
+  background-position: -105px 0px;
 }
 
 body {
