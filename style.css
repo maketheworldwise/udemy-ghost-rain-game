@@ -31,11 +31,11 @@
   background-position: 0px 0px;
 }
 
-#hero.right {
+#hero.left {
   background-position: -70px 0px;
 }
 
-#hero.left {
+#hero.right {
   background-position: -105px 0px;
 }
 

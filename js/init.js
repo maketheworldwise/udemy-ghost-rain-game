@@ -1,36 +1,5 @@
 document.addEventListener("keydown", function (event) {
-  // 키를 눌렀을 때
-
-  const heroLeftWithoutPx = Number(
-    getComputedStyle(heroElement).left.split("px")[0]
-  );
-
-  switch (event.code) {
-    case "ArrowRight":
-      heroElement.className = "left";
-      calculatedLeft = heroLeftWithoutPx + 10;
-
-      if (calculatedLeft <= 750) {
-        heroElement.style.left = calculatedLeft + "px";
-      }
-      break;
-    case "ArrowLeft":
-      heroElement.className = "right";
-      calculatedLeft = heroLeftWithoutPx - 10;
-
-      if (calculatedLeft >= 0) {
-        heroElement.style.left = calculatedLeft + "px";
-      }
-      break;
-    case "ArrowUp":
-      heroElement.className = "up";
-      break;
-    default:
-      break;
-  }
+  heroAction(event.code);
 });
 
-document.addEventListener("keyup", function () {
-  // 키를 떼었을 때
-  heroElement.className = "down";
-});
+document.addEventListener("keyup", cleanUp);
