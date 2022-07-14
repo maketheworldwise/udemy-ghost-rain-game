@@ -6,9 +6,60 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="bg">
-      <span id="hero"></span>
-    </div>
+    <header>
+      <div class="header__intro">
+        <h1>Ghost Rain Game</h1>
+        <p>Avoid the ghosts coming down!</p>
+      </div>
+
+      <div class="header__info">
+        <div class="header__life">
+          Life :
+          <img
+            class="life"
+            src="./images/heart-16x16.png"
+            alt="Icon not found."
+          />
+          <img
+            class="life"
+            src="./images/heart-16x16.png"
+            alt="Icon not found."
+          />
+          <img
+            class="life"
+            src="./images/heart-16x16.png"
+            alt="Icon not found."
+          />
+        </div>
+
+        <div class="header__play-time">Play time : 00:00</div>
+        <div class="header__point">
+          Points :
+          <span id="point">0</span>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="section__game" id="bg">
+        <span id="hero"></span>
+      </div>
+
+      <button id="section__btn-start">Game Start!</button>
+
+      <div class="section__rank">
+        <table>
+          <th>Rank</th>
+          <th>Play time</th>
+          <th>Points</th>
+          <tr>
+            <td>1</td>
+            <td>00:00</td>
+            <td>10</td>
+          </tr>
+        </table>
+      </div>
+    </section>
 
     <script src="js/settings.js"></script>
     <script src="js/ghost.js"></script>
