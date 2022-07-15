@@ -1,27 +1,34 @@
-function heroAction(eventCode) {
-  const heroLeftPoint = removePxString(getComputedStyle(heroElement).left);
-  const move = [heroLeftPoint - 10, heroLeftPoint + 10];
-
-  switch (eventCode) {
-    case "ArrowLeft":
-      heroElement.className = "left";
-      heroMove(move[0]);
-      break;
-    case "ArrowRight":
-      heroElement.className = "right";
-      heroMove(move[1]);
-      break;
-    case "ArrowUp":
-      heroElement.className = "up";
+class Hero {
+  constructor() {
+    this.heroElement = document.getElementById("hero");
+    this.left = removePxString(getComputedStyle(this.heroElement).left);
+    this.speed = 10;
   }
-}
 
-function heroMove(move) {
-  if (move >= -15 && move <= 760) {
-    heroElement.style.left = move + "px";
+  move(direction) {
+    if (direction === "left") {
+      this.heroElement.className = "left";
+      this.setLeft(-this.speed);
+    } else if (direction === "right") {
+      this.heroElement.className = "right";
+      this.setLeft(this.speed);
+    }
   }
-}
 
-function cleanUp() {
-  heroElement.className = "down";
+  setLeft(speed) {
+    // const currentLeft = removePxString(getComputedStyle(heroElement).left);
+    // const newLeft = currentLeft + left;
+
+    const newLeft = this.left + speed;
+    if (newLeft > BG_WIDTH - HERO_WIDTH || newLeft < 0) {
+      return;
+    }
+
+    this.heroElement.style.left = newLeft + "px";
+    this.left = newLeft;
+  }
+
+  setDownDirection() {
+    this.heroElement.className = "down";
+  }
 }
