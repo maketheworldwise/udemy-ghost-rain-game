@@ -1,22 +1,27 @@
-function createGhost() {
-  const ghostElement = document.createElement("span");
+class Ghost {
+  constructor() {
+    this.ghostElement = document.createElement("span");
+    this.ghostElement.style.position = "absolute";
+    this.ghostElement.style.top = "0px";
+    this.ghostElement.style.left = randomNum(0, BG_WIDTH - GHOST_WIDTH) + "px";
+    this.ghostElement.style.width = GHOST_WIDTH + "px";
+    this.ghostElement.style.height = GHOST_HEIGHT + "px";
+    this.ghostElement.style.background = 'url("./images/ghost.png") no-repeat';
 
-  ghostElement.style.position = "absolute";
-  ghostElement.style.top = "0px";
+    this.speed = 1;
+  }
 
-  let randomLeft = randomNum(0, BG_WIDTH - GHOST_WIDTH);
-  ghostElement.style.left = randomLeft + "px"; // "50%";
+  create() {
+    bgElement.appendChild(this.ghostElement);
+    window.requestAnimationFrame(() => {
+      this.move();
+    });
+  }
 
-  ghostElement.style.width = GHOST_WIDTH + "px";
-  ghostElement.style.height = GHOST_HEIGHT + "px";
-  ghostElement.style.background = 'url("./images/ghost.png") no-repeat';
-
-  bgElement.appendChild(ghostElement);
-
-  let interval = setInterval(function () {
-    const ghostTopPoint = removePxString(ghostElement.style.top);
-    const ghostLeftPoint = removePxString(ghostElement.style.left);
-    const heroLeftPoint = removePxString(heroElement.style.left);
+  move() {
+    const ghostTopPoint = removePxString(this.ghostElement.style.top);
+    const ghostLeftPoint = removePxString(this.ghostElement.style.left);
+    const heroLeftPoint = removePxString(player.heroElement.style.left);
 
     if (lifeElements.length === 0) {
       clearInterval(interval);
@@ -33,39 +38,45 @@ function createGhost() {
         (ghostPointRange[0] < heroPointRange[1] &&
           heroPointRange[1] < ghostPointRange[1])
       ) {
-        killGhost(ghostElement);
+        this.die();
         return;
       }
     }
 
-    const move = ghostTopPoint + 10;
+    const move = ghostTopPoint + this.speed;
 
     if (move >= BG_HEIGHT - GHOST_HEIGHT) {
-      ghostElement.remove();
-      pointElements.innerText = Number(pointElements.innerText) + 1;
+      this.remove();
+      pointElement.innerText = Number(pointElement.innerText) + 1;
       return;
     }
 
-    ghostElement.style.top = move + "px";
-  }, 100);
-}
+    this.ghostElement.style.top = move + "px";
 
-function killGhost(ghostElement) {
-  ghostElement.style.backgroundPosition = "-45px 0px";
-  setTimeout(function () {
-    ghostElement.remove();
-  }, 300);
-  let point = Number(pointElements.innerText) - 1;
-  if (point < 0) {
-    pointElements.innerText = 0;
-  } else {
-    pointElements.innerText = point;
+    window.requestAnimationFrame(() => {
+      this.move();
+    });
   }
-  // lifeElements[lifeElements.length - 1].remove();
-}
 
-function randomNum(min, max) {
-  return Math.floor(Math.random() * (max + 1 - min)) + min;
-}
+  remove() {
+    this.ghostElement.remove();
+  }
 
-// setInterval(createGhost, 300);
+  die() {
+    this.ghostElement.style.backgroundPosition = "-45px 0px";
+    const soundEffect = new Audio("./audio/dying.wav");
+    soundEffect.play();
+
+    setTimeout(() => {
+      this.remove();
+    }, 300);
+
+    let point = Number(pointElement.innerText) - 1;
+    if (point < 0) {
+      pointElement.innerText = 0;
+    } else {
+      pointElement.innerText = point;
+    }
+    lifeElements[lifeElements.length - 1].remove();
+  }
+}
